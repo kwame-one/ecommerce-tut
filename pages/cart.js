@@ -67,7 +67,7 @@ export default function Cart({navigation}) {
                 )}
             />
 
-            <FAB title="Clear" placement='right' size='small' color='#002171' onPress={() => console.log('clearing')} />
+            <FAB title="Checkout" placement='right' size='small' color='#002171' onPress={() => console.log('clearing')} />
 
         </View>
     );
