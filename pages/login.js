@@ -4,10 +4,9 @@ import {
     StyleSheet,
     Text,
     View,
-    Image,
     TextInput,
-    Button,
-    TouchableOpacity, Alert,
+    TouchableOpacity,
+    Alert,
 } from "react-native";
 
 export default function Login({navigation}) {
