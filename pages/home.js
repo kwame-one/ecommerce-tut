@@ -57,6 +57,11 @@ export default function Home({navigation}) {
 
     }
 
+    const viewProductDetails = (product) => {
+        console.log(product)
+        navigation.navigate('ProductDetails', {product: product})
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar style="light" />
@@ -64,7 +69,7 @@ export default function Home({navigation}) {
                 keyExtractor={(item) => item.id}
                 data={products}
                 renderItem={({item}) => (
-                    <Product product={item} addToCartHandler={addToCart}/>
+                    <Product product={item} addToCartHandler={addToCart} viewProductDetailsHandler={viewProductDetails}/>
                 )}
             />
             <FAB title="Cart" placement='right' size='small' color='#002171' onPress={() => navigation.navigate('Cart')} />
