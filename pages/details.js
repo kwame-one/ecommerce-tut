@@ -5,10 +5,61 @@ import {
     View,
     TouchableOpacity,
     Image,
-    ScrollView,
+    ScrollView, Alert,
 } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ProductDetails({route}) {
+
+    const addToCart = async (prod) => {
+        let cartItems = [];
+
+        try {
+            let cart = await AsyncStorage.getItem('cart')
+
+            if (cart !== null) {
+
+                cart = JSON.parse(cart);
+
+                let existingProduct = cart.find(p => p.product.id === prod.id)
+
+                if (existingProduct) {
+                    existingProduct.quantity = existingProduct.quantity + 1
+
+                    cart.forEach((c, index) => {
+                        if (c.product.id === existingProduct.product.id) {
+                            cart[index] = existingProduct
+                        }
+                    })
+
+                    cartItems = [...cart]
+
+                }else {
+                    cartItems = [...cart, {quantity: 1, product: prod}]
+                }
+
+            }else {
+                cartItems = [{quantity: 1, product: prod}]
+            }
+
+
+            await AsyncStorage.setItem('cart', JSON.stringify(cartItems))
+
+            Alert.alert(
+                "Cart",
+                "Product added to cart",
+                [
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+            );
+
+        }catch (e) {
+            console.log('error adding to cart', e)
+        }
+
+
+    }
+
     return (
         <View style={styles.container}>
             <ScrollView>
@@ -41,7 +92,7 @@ export default function ProductDetails({route}) {
                 </View>
                 <View style={styles.separator}/>
                 <View style={styles.addToCarContainer}>
-                    <TouchableOpacity style={styles.addToCartBtn} onPress={()=> console.log('clicked')}>
+                    <TouchableOpacity style={styles.addToCartBtn} onPress={()=> addToCart(route.params.product)}>
                         <Text style={styles.addToCartText}>Add To Cart</Text>
                     </TouchableOpacity>
                 </View>

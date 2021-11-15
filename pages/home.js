@@ -8,11 +8,46 @@ import { FAB } from 'react-native-elements';
 export default function Home({navigation}) {
 
     const [products, setProducts] = useState([
-        {id: 1, image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg', name: 'Product 1', size: 10, colors: [], price: 10},
-        {id: 2, image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg', name: 'Product 2', size: 20, colors: [], price: 20},
-        {id: 3, image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg', name: 'Product 3', size: 30, colors: [], price: 30},
-        {id: 4, image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg', name: 'Product 4', size: 40, colors: [], price: 40},
-        {id: 5, image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg', name: 'Product 4', size: 50, colors: [], price: 50}
+        {
+            id: 1,
+            image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
+            name: 'Product 1',
+            size: ["XL", "L", "M"],
+            colors: [],
+            price: 10
+        },
+        {
+            id: 2,
+            image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
+            name: 'Product 2',
+            size: ["S", "M", "L"],
+            colors: [],
+            price: 20
+        },
+        {
+            id: 3,
+            image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
+            name: 'Product 2',
+            size: ["L", "XL"],
+            colors: [],
+            price: 30
+        },
+        {
+            id: 4,
+            image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
+            name: 'Product 2',
+            size: [],
+            colors: ["S","M", "L", "XL"],
+            price: 40
+        },
+        {
+            id: 5,
+            image: 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
+            name: 'Product 2',
+            size: ["S", "XL"],
+            colors: [],
+            price: 50
+        },
     ])
 
     const addToCart = async (productId) => {

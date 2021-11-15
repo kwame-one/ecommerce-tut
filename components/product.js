@@ -19,11 +19,11 @@ export default function Product({product, addToCartHandler, viewProductDetailsHa
                     GH₵ {product.price}
                 </Text>
                 <View style={styles.btns}>
-                    <Icon
-                        raised
-                        type='font-awesome'
-                        name='money'
-                        color='#002171' />
+                    {/*<Icon*/}
+                    {/*    raised*/}
+                    {/*    type='font-awesome'*/}
+                    {/*    name='money'*/}
+                    {/*    color='#002171' />*/}
                     <Icon
                         onPress={() => addToCartHandler(product.id)}
                         raised
